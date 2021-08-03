@@ -5,9 +5,25 @@ import './styles.css'
 const Form = () => {
     const [pictures, setPictures] = useState([])
 
-    const onDrop = (picture) => {
-        setPictures(pictures.concat(picture))
-        console.log(picture)
+    const onDrop = (pics) => {
+        pics.forEach(pic => {
+            getBase64(pic, (base64) => {
+                pic['base64'] = base64
+            })
+            console.log(pic);
+        })
+        setPictures(pictures.concat(pics))
+    }
+
+    const getBase64 = (file, callback) => {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            callback(reader.result);
+        }
+        reader.onError = function (e) {
+            console.log('error:', e)
+        }
     }
 
     return(
