@@ -1,16 +1,19 @@
 import {React, useState} from 'react'
 import ImageUploader from 'react-images-upload';
+import {fetch_faces} from '../actions/index'
 import './styles.css'
 
 const Form = () => {
+
     const [pictures, setPictures] = useState([])
 
     const onDrop = (pics) => {
         pics.forEach(pic => {
             getBase64(pic, (base64) => {
                 pic['base64'] = base64
+                fetch_faces(base64);
             })
-            console.log(pic);
+            //console.log(pic);
         })
         setPictures(pictures.concat(pics))
     }
@@ -29,10 +32,11 @@ const Form = () => {
     return(
         <>
             <ImageUploader
+                multiple
                 withIcon={true}
                 buttonText='Choose images'
                 onChange={onDrop}
-                imgExtension={['.jpg', '.gif', '.png', '.gif']}
+                imgExtension={['.jpg', '.gif', '.png', '.gif', 'jpeg']}
                 label="UPLOAD"
                 withPreview={true}
                 maxFileSize={10242880}

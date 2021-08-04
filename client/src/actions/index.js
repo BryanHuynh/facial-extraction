@@ -1,8 +1,17 @@
 import * as api from '../api/index'
 
-export const fetch = async() => {
+export const fetch_faces = async(base64) => {
     try{
-        const res = await api.fetch();
+        const option = {
+          method: "POST",
+          url: "http://localhost:5000/recognition",
+          headers: {},
+          data: {
+            base64: base64,
+          }
+        }
+        const res = await api.get_faces(option);
+        console.log(res);
         return res;
     }catch(error){
         console.log(error.message)

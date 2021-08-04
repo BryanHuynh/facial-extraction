@@ -1,13 +1,16 @@
 
 import Form from "./components/Form"
+
 //import {fetch, post} from './actions/index'
 
 function App() {
+
+
   return (
     <div className="App">
       <div className="jumbotron text-center">
         <h1>My First Bootstrap Page</h1>
-        <p>Resize this responsive page to see the effect!</p> 
+        <p>Resize this responsive page to see the effect!</p>
       </div>
       <div className="container">
         <div className="row">
