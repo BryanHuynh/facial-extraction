@@ -10,8 +10,10 @@ const Form = () => {
     const onDrop = (pics) => {
         pics.forEach(pic => {
             getBase64(pic, (base64) => {
-                pic['base64'] = base64
-                fetch_faces(base64);
+                let _base64 = base64.substring(base64.indexOf(',') + 1);
+                pic['base64'] = _base64
+
+                fetch_faces(_base64);
             })
             //console.log(pic);
         })

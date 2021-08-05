@@ -2,7 +2,7 @@ import request from 'request'
 
 export const recognition = async (req, res) => {
     console.log('recognition requested');
-    //console.log(req.body);
+    //console.log(req.body.base64);
     const options = {
         method: 'POST',
         url: 'https://luxand-cloud-face-recognition.p.rapidapi.com/photo/detect',
@@ -13,15 +13,16 @@ export const recognition = async (req, res) => {
           useQueryString: true
         },
         form: {
-          photo: 'https://i1.wp.com/digital-photography-school.com/wp-content/uploads/2021/03/how-to-take-group-photos-7.jpg?w=1500&ssl=1'
+          photo: req.body.base64
         }
       };
-      res.status(200).send(req.body);
-      /*
+      //res.status(200).send(req.body.base64);
+
       request(options, function (error, response, body) {
           if (error) throw new Error(error);
-          //console.log(body);
+          console.log(body);
           res.status(200).send(body);
       });
-      */
+
+
 }
