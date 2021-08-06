@@ -11,7 +11,7 @@ export const fetch_faces = async(base64) => {
           }
         }
         const res = await api.get_faces(option);
-        console.log(res);
+        //console.log(res);
         return res;
     }catch(error){
         console.log(error.message)

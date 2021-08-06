@@ -3,22 +3,21 @@ import ImageUploader from 'react-images-upload';
 import {fetch_faces} from '../actions/index'
 import './styles.css'
 
-const Form = () => {
-
-    const [pictures, setPictures] = useState([])
+const Form = (props) => {
 
     const onDrop = (pics) => {
         pics.forEach(pic => {
             getBase64(pic, (base64) => {
                 let _base64 = base64.substring(base64.indexOf(',') + 1);
-                pic['base64'] = _base64
-
-                fetch_faces(_base64);
+                pic['base64'] = _base64;
+                fetch_faces(_base64).then((res) => {
+                  pic['faces'] = res.data;
+                });
             })
-            //console.log(pic);
         })
-        setPictures(pictures.concat(pics))
-    }
+        props.setPictures(pics)
+        console.log(pics);
+      }
 
     const getBase64 = (file, callback) => {
         let reader = new FileReader();
