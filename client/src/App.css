@@ -24,6 +24,29 @@
   color: white;
 }
 
+.images_container{
+  display: block;
+
+}
+
+.image_container{
+
+}
+
+.face {
+  position:absolute;
+
+}
+
+.crop {
+  float:left;
+  margin:.5em 10px .5em 0;
+  overflow:hidden; /* this is important */
+  position:relative; /* this is important too */
+  border:1px solid #ccc;
+
+}
+
 .App-link {
   color: #61dafb;
 }
