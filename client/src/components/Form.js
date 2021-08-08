@@ -12,7 +12,10 @@ const Form = (props) => {
                 pic['base64'] = _base64;
                 fetch_faces(_base64).then((res) => {
                   pic['faces'] = res.data;
-                  props.setPictures(pics)
+                  props.setPictures(state => {
+                      const list = state.concat(pic);
+                      return list;
+                  })
                 });
             })
         })
