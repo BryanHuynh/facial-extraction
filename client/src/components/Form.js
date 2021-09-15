@@ -6,6 +6,7 @@ import './styles.css'
 const Form = (props) => {
 
     const onDrop = async function(pics) {
+        props.setPictures([]);
         pics.forEach(pic => {
             getBase64(pic, (base64) => {
                 let _base64 = base64.substring(base64.indexOf(',') + 1);

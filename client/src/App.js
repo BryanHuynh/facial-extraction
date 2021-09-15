@@ -24,9 +24,6 @@ function App() {
 					<div className="">
 						<div className="images_container">
 							{
-								console.log(pictures)
-							}
-							{
 								pictures.length === 0 ? <br/> :
 								pictures.map((image, index) => (
 									image.faces.map((face, index) => (

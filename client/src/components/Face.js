@@ -11,7 +11,7 @@ const Face = (props) => {
         }
         image
             .crop(props.region.left, props.region.top, props.region.right - props.region.left, props.region.bottom - props.region.top)
-            .resize(Jimp.AUTO, 100)
+            .cover(100, 100)
             .getBase64(Jimp.AUTO, (err, buffer) => {
                 if (err) {
                     console.log(err);
